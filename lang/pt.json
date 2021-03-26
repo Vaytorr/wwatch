@@ -1,0 +1,15 @@
+{
+    "popularity": "Popular",
+    "release": "Lançamento",
+    "genre": "Gênero",
+    "search": "Pesquisar",
+    "nothing": "Nada para ver aqui",
+    "noImage": "Sem Imagem",
+    "releaseDate": "Release date",
+    "originalTitle":"Original title",
+    "originalLanguage":"Original language",
+    "userRating":"User rating"  ,
+    "posters": "Posters do Filme",
+    "videos": "Trailers do filme",
+    "drag": "Arraste para esquerda ou direira para avançar ou retroceder o video"
+}

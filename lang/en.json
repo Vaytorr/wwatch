@@ -1,0 +1,15 @@
+{
+    "popularity": "Popular",
+    "release": "Release",
+    "genre": "Genre",
+    "search": "Search",
+    "nothing": "Nothing to see here",
+    "noImage": "No Image", 
+    "releaseDate": "Release date",
+    "originalTitle":"Original title",
+    "originalLanguage":"Original language",
+    "userRating":"User rating",
+    "posters": "Movie Posters",
+    "videos": "Movie Trailers",
+    "drag": "Drag to left or right to skip or rewind video"
+}
