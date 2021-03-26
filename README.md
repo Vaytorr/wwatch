@@ -19,7 +19,7 @@
 
 <img src="https://github.com/Vaytorr/wwatch/blob/master/GitHubImages/MovieScreen.jpg" height="500">
 
-*On the movie screen you can see the synopses of the movie, the posters and videos*
+*On the movie screen you can see the synopsis, posters and videos of it*
 
 <img src="https://github.com/Vaytorr/wwatch/blob/master/GitHubImages/MovieScreen2.jpg" height="500">
 
