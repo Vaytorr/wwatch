@@ -56,7 +56,7 @@ int getCount(data) {
 
 Future<Map> getData(String type, BuildContext context,
     {int movieid, int page, String search}) async {
-  //TODO get your own api key at https://developers.themoviedb.org/3
+  //TODO get your own api key at https://developers.themoviedb.org
   String apiKey = '';
   //--------------------------------------------------------------------
   String lang = 'en';
@@ -106,18 +106,3 @@ Future<Map> getData(String type, BuildContext context,
   }
   return json.decode(response.body);
 }
-
-//TODO-----------------------------------------------------------------------------------|
-//TODO Adicionar upcoming movies no lugar de latest -------------------------------------|
-//TODO Adicionar companias responsaveis pelo filme na MovieScreen() ---------------------|  
-//TODO Adicionar onde assistir ou onde comprar na MovieScreen() -------------------------|  
-//TODO Adicionar linguas faladas no filme na MovieScreen() ------------------------------|
-//TODO Adicionar budget e reveneu na MovieScreen() --------------------------------------|
-//TODO Adicionar paises em que o filme foi gravado na MovieScreen() ---------------------|
-//TODO Adicionar (URL) pagina oficial do filme na MovieScreen() -------------------------|
-//TODO acionar (URL) pagina do IMDB do filme na MovieScreen() ---------------------------|
-//TODO adicionar recomendações de filmes parecidos na MovieScreen() ---------------------|
-//TODO adicionar reviews de usuarios na MovieScreen() -----------------------------------|
-//TODO adicionar atores que participaram do filme na MovieScreen() ----------------------|  <Future>
-//TODO adicionar suporte a series -------------------------------------------------------|  <Future>
-//TODO-----------------------------------------------------------------------------------| 
