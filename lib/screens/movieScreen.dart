@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:drop_cap_text/drop_cap_text.dart';
 import 'package:flutter/material.dart';
 import 'package:wwatch/app_localizations.dart';
@@ -73,18 +74,32 @@ class _MovieScreenState extends State<MovieScreen> {
                           snapshot2.data["results"][index]["backdrop_path"] !=
                               null
                       ? Stack(children: <Widget>[
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              image: DecorationImage(
-                                  fit: BoxFit.fill,
-                                  image: NetworkImage(snapshot2.data["results"]
-                                              [index]["backdrop_path"] !=
-                                          null
-                                      ? "https://image.tmdb.org/t/p/w500/${snapshot2.data["results"][index]["backdrop_path"]}"
-                                      : "https://image.tmdb.org/t/p/w500/${snapshot2.data["results"][index]["poster_path"]}")),
+                          CachedNetworkImage(
+                            fit: BoxFit.fill,
+                            height: 250,
+                            imageUrl: snapshot2.data["results"][index]
+                                        ["backdrop_path"] !=
+                                    null
+                                ? "https://image.tmdb.org/t/p/w500/${snapshot2.data["results"][index]["backdrop_path"]}"
+                                : "https://image.tmdb.org/t/p/w500/${snapshot2.data["results"][index]["poster_path"]}",
+                            placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator(
+                                backgroundColor: Colors.orange,
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    Colors.black54),
+                              ),
                             ),
-                            height: 250.0,
+                            errorWidget: (context, url, error) => Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.error),
+                                SizedBox(
+                                  height: 4,
+                                ),
+                                Text(AppLocalizations.of(context)
+                                    .translate('noImage'))
+                              ],
+                            ),
                           ),
                           Container(
                             height: 252.0,
@@ -128,13 +143,14 @@ class _MovieScreenState extends State<MovieScreen> {
                                     color: Colors.white, fontSize: 16),
                                 textAlign: TextAlign.start,
                                 dropCap: DropCap(
-                                    width: 120,
-                                    height: 150,
-                                    child: Image.network(
-                                      "https://image.tmdb.org/t/p/w500/${snapshot2.data["results"][index]["poster_path"]}",
-                                      fit: BoxFit.fitHeight,
-                                      height: 250,
-                                    )),
+                                  width: 120,
+                                  height: 150,
+                                  child: Image.network(
+                                    "https://image.tmdb.org/t/p/w500/${snapshot2.data["results"][index]["poster_path"]}",
+                                    fit: BoxFit.fitHeight,
+                                    height: 250,
+                                  ),
+                                ),
                               )
                             : Text(
                                 snapshot2.data["results"][index]["overview"]),

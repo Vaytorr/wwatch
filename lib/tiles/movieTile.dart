@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wwatch/app_localizations.dart';
 import 'package:wwatch/screens/movieScreen.dart';
@@ -43,21 +44,28 @@ class _MovieTileState extends State<MovieTile> {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        snapshot.data["results"][index]["poster_path"] != null
-                            ? Image.network(
+                        CachedNetworkImage(
+                            height: 250,
+                            imageUrl:
                                 "https://image.tmdb.org/t/p/w500/${snapshot.data["results"][index]["poster_path"]}",
-                                fit: BoxFit.fill,
-                                height: 250,
-                              )
-                            : Container(
-                                height: 250,
-                                child: Center(
-                                  child: Text(
-                                    AppLocalizations.of(context)
-                                        .translate('noImage'),
+                            placeholder: (context, url) => Center(
+                                  child: CircularProgressIndicator(
+                                    backgroundColor: Colors.orange,
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.black54),
                                   ),
                                 ),
-                              ),
+                            errorWidget: (context, url, error) => Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.error),
+                                    SizedBox(
+                                      height: 4,
+                                    ),
+                                    Text(AppLocalizations.of(context)
+                                        .translate('noImage'))
+                                  ],
+                                )),
                         SizedBox(
                           height: 8,
                         ),

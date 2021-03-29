@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           primaryColor: Colors.orange,
           buttonColor: Colors.blue,
+          accentColor: Colors.orange,
           backgroundColor: Colors.grey[850]),
       home: HomeScreen(),
     );
@@ -66,43 +67,46 @@ Future<Map> getData(String type, BuildContext context,
     lang = myLocale.toString();
   }
   http.Response response;
-
+  var url;
   switch (type) {
     case 'genre':
       {
-        response = await http.get(
+        url = Uri.parse(
             "https://api.themoviedb.org/3/discover/movie?api_key=$apiKey&language=$lang-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=$page&with_genres=$movieid");
       }
       break;
     case 'popularity':
       {
         if (search == null || search == "") {
-          response = await http.get(
+          url = Uri.parse(
               "https://api.themoviedb.org/3/discover/movie?api_key=$apiKey&language=$lang&sort_by=popularity.desc&include_adult=true&include_video=false&page=$page&include_video=true");
         } else {
-          response = await http.get(
+          url = Uri.parse(
               "https://api.themoviedb.org/3/search/movie?api_key=$apiKey&language=$lang&query=$search&page=$page&include_adult=true");
         }
       }
       break;
     case 'genres':
       {
-        response = await http.get(
+        url = Uri.parse(
             "https://api.themoviedb.org/3/genre/movie/list?api_key=$apiKey&language=$lang");
       }
       break;
     case 'images':
       {
-        response = await http.get(
+        url = Uri.parse(
             "https://api.themoviedb.org/3/movie/$movieid/images?api_key=$apiKey&language=en");
       }
       break;
     case 'videos':
       {
-        response = await http.get(
+        url = Uri.parse(
             "https://api.themoviedb.org/3/movie/$movieid/videos?api_key=$apiKey&language=en");
       }
       break;
   }
+  response = await http.get(url);
+  print(url);
+  print(response.body);
   return json.decode(response.body);
 }
