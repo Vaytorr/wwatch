@@ -257,12 +257,14 @@ Widget _createTable(
 ) {
   if (type == "genres") {
     return ListView.builder(
+        key: PageStorageKey<String>('GenreList'),
         itemCount: getCount(snapshot.data["genres"]),
         itemBuilder: (context, index) {
           return GenreTile(context, snapshot, index);
         });
   } else {
     return GridView.builder(
+        key: PageStorageKey<String>('PopularityGrid'),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 2,

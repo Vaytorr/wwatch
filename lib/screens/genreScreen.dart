@@ -155,6 +155,7 @@ Widget _createTable(
   String type,
 ) {
   return GridView.builder(
+      key: PageStorageKey<String>('GenreGrid'),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           crossAxisSpacing: 2,
