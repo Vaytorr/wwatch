@@ -45,6 +45,7 @@ class _MovieTileState extends State<MovieTile> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         CachedNetworkImage(
+                            fit: BoxFit.fill,
                             height: 250,
                             imageUrl:
                                 "https://image.tmdb.org/t/p/w500/${snapshot.data["results"][index]["poster_path"]}",
