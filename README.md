@@ -1,3 +1,5 @@
+[Versão em português desse arquivo](https://github.com/guibrandalisee/wwatch/blob/master/READMEPT.md)
+
 # WWatch
 
 *An app to find what to watch next*
